@@ -82,6 +82,10 @@ func findSymbools(pathd []rune) []int {
 	preloc := 0
 	loc = append(loc, 0)
 	for i, r := range pathd {
+		if r == rune(Dz[0]) || r == rune(DZ[0]) {
+			loc = append(loc, i)
+			continue
+		}
 		if _, ex := Symbools[r]; ex && (preloc+1 < i) {
 			if r == rune(' ') && i < len(pathd)-1 {
 				// fmt.Println(string(r), string(pathd[i+1]))
@@ -150,6 +154,7 @@ func conv(pathd []rune, loc []int) []*Path {
 }
 
 func Scale(pathd string, scale float32) string {
+	fmt.Println(scale, pathd)
 	rs := []rune(pathd)
 	loc := findSymbools(rs)
 	ps := conv(rs, loc)
