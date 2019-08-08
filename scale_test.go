@@ -15,9 +15,9 @@ func TestFindSymbools(t *testing.T) {
 }
 
 func TestConv(t *testing.T) {
-	// pathd := "M100 100 C220 98, 220 104, 150 150M150 150 C80 196, 80 202, 200 200Z"
+	pathd := "M100 100 C220 98, 220 104, 150 150M150 150 C80 196, 80 202, 200 200Z"
 	// pathd := "M14.412 5.652c-1.28 0-2.283-.977-2.283-2.224 0-1.205zm0-4.306a.736.736 0 0 0-.71-.76z"
-	pathd := "M0 0zm0-4.306a.736.736 0 0 0-.71-.76z"
+	// pathd := "M0 0zm0-4.306a.736.736 0 0 0-.71-.76z"
 	rs := []rune(pathd)
 	loc := findSymbools(rs)
 	fmt.Println(loc)

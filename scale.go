@@ -3,6 +3,7 @@ package scale
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/toukii/bytes"
 	"github.com/toukii/goutils"
@@ -122,9 +123,12 @@ func ConvPath(rs []rune, islast bool) []*Path {
 	if rs[0] == rune('.') {
 		str = fmt.Sprintf("0%s", string(rs))
 	}
+	str = strings.Trim(str, " ")
+	if str == "" {
+		return nil
+	}
 	f, err := strconv.ParseFloat(str, 64)
 	if err != nil {
-		// fmt.Printf("conv %s, err:%+v", str, err)
 		loc := 0
 		for i := loc; i < len(rs); i++ {
 			if rs[i] == rune('.') {
